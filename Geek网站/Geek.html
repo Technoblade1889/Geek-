@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geek招新-加入我们</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        /* 导航栏容器 */
+        .nav {
+            background-color: #ffb400; /* 黄色背景 */
+            padding: 0 20px;
+        }
+
+        /* 导航列表 */
+        .nav-list {
+            display: flex; /* 水平排列 */
+            justify-content: space-around; /* 均匀分布 */
+            align-items: center; /* 垂直居中 */
+            height: 60px; /* 导航栏高度 */
+            max-width: 1200px; /* 最大宽度 */
+            margin: 0 auto; /* 居中显示 */
+        }
+
+        /* 导航链接 */
+        .nav-link {
+            color: #ffffff; /* 白色文字 */
+            font-size: 25px; /* 字体大小 */
+            font-weight: 500; /* 字体粗细 */
+            padding: 10px 15px; /* 内边距 */
+            display: flex; /* 弹性布局 */
+            align-items: center; /* 图标文字居中对齐 */
+            gap: 8px; /* 图标与文字间距 */
+            transition: opacity 0.3s; /* 过渡效果 */
+        }
+
+        /* 链接悬停效果 */
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        /* 下拉箭头样式 */
+        .dropdown-arrow {
+            font-size: 14px;
+        }
+
+        /* 下拉菜单按钮（Introduction） */
+    .dropdown-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 二维码容器：默认隐藏 */
+    .qr-container {
+      display: none;
+      position: absolute;
+      top: 100%; /* 位于导航栏正下方 */
+      left: 20px; /* 与左侧对齐 */
+      margin-top: 10px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 阴影效果 */
+      z-index: 100; /* 确保在其他内容上方 */
+    }
+
+    /* 二维码图片样式 */
+    .qr-container img {
+      width: 180px;
+      height: 180px;
+    }
+
+    /* 二维码下方文字 */
+    .qr-container p {
+      margin: 10px 0 0;
+      text-align: center;
+      color: #333;
+      font-size: 14px;
+    }
+    </style>
+    
+</head>
+<body>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li>
+                <a href="#" class="nav-link">
+                    Introduction
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link">
+                    About US
+                    <span>👤</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link">
+                    NewThread
+                    <span>🏠</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link">
+                    Contact US
+                    <span>📞</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link">
+                    Q&A
+                    <span>💬</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+     <!-- 导航栏 -->
+  <div class="navbar">
+    <!-- Introduction（带下拉二维码） -->
+<!-- 修正后的Introduction区域 -->
+<div class="dropdown"> <!-- 新增外层容器，用于定位二维码 -->
+  <button class="dropdown-btn" onclick="toggleQR()">
+    Introduction ▼
+  </button>
+  <!-- 二维码容器：与button平级，不要嵌套在button里 -->
+  <div class="qr-container" id="qrBox">
+    <img src="qrcode_1699620286564.jpg" alt="2022届Geek新群">
+    <p>2022届Geek新群<br>极客扫码加入Geek</p>
+  </div>
+</div>
+
+<script>
+    // 切换二维码显示/隐藏
+    function toggleQR() {
+      const qrBox = document.getElementById("qrBox");
+      qrBox.style.display = qrBox.style.display === "block" ? "none" : "block";
+    }
+
+    // 点击页面其他区域关闭二维码（可选优化）
+ // 点击页面其他区域关闭二维码
+document.addEventListener('click', function(event) {
+  const qrBox = document.getElementById("qrBox");
+  const dropdownBtn = document.querySelector('.dropdown-btn');
+  // 如果点击的不是按钮，也不是二维码容器，则隐藏二维码
+  if (!dropdownBtn.contains(event.target) && !qrBox.contains(event.target)) {
+    qrBox.style.display = "none";
+  }
+});
+  </script>
+
+</body>
+</html>
+
